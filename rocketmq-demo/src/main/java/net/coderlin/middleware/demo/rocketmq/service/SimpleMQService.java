@@ -36,4 +36,15 @@ public class SimpleMQService {
         SendResult sendResult = producer.send(msg);
         log.info("sendResult: {}", sendResult);
     }
+
+    public void produceDelayMsg(String str, int delayLevel) throws UnsupportedEncodingException, InterruptedException, RemotingException, MQClientException, MQBrokerException {
+        Message msg = new Message("SELF_TEST_TOPIC" /* Topic */,
+                "TagA" /* Tag */,
+                (str).getBytes(RemotingHelper.DEFAULT_CHARSET) /* Message body */
+        );
+        // 发送消息到一个Broker
+        msg.setDelayTimeLevel(delayLevel);
+        SendResult sendResult = producer.send(msg);
+        log.info("sendResult: {}", sendResult);
+    }
 }
