@@ -18,7 +18,7 @@ import net.coderlin.middleware.demo.elasticjob.job.MySimpleJob;
  */
 public class MySimpleJobDemo {
     public static void main(String[] args) {
-        new JobScheduler(createRegistryCenter(), createJobConfiguration("0=A")).init();
+        new JobScheduler(createRegistryCenter(), createJobConfiguration("0=A,1=B")).init();
     }
 
     private static CoordinatorRegistryCenter createRegistryCenter() {
@@ -32,7 +32,7 @@ public class MySimpleJobDemo {
         // ...
         // 定义作业核心配置
         JobCoreConfiguration simpleCoreConfig = JobCoreConfiguration
-                .newBuilder("mySimpleJob", "0/1 * * * * ?", 1)
+                .newBuilder("mySimpleJob", "0/1 * * * * ?", 2)
                 .shardingItemParameters(shardingItemParameters)
                 .build();
         // 定义SIMPLE类型配置
