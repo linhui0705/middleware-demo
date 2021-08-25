@@ -22,6 +22,7 @@ public class MySimpleJob implements SimpleJob {
 
     @Override
     public void execute(ShardingContext shardingContext) {
-        System.out.println("MyElasticJob executing. Date: " + DATE_FORMAT.format(new Date()));
+        System.out.println("MyElasticJob executing. Date: " + DATE_FORMAT.format(new Date()) + ". total: "
+                + shardingContext.getShardingTotalCount() + ". shardingParameter: " + shardingContext.getShardingParameter());
     }
 }
