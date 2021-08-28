@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>elasticjob-lite-core-2-demo</module>
+        <module>elasticjob-lite-core-3-demo</module>
     </modules>
 
 
