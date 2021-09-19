@@ -11,6 +11,7 @@
     <modules>
         <module>elasticjob-demo</module>
         <module>rocketmq-demo</module>
+        <module>pulsar-demo</module>
         <module>redis-demo</module>
     </modules>
 
