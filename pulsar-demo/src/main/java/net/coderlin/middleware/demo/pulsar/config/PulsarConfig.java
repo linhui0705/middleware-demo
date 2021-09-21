@@ -32,7 +32,8 @@ public class PulsarConfig {
     }
 
     @Bean
-    public Consumer<String> consumer(PulsarClient client, @Qualifier("messageListener") MessageListener<String> listener) throws PulsarClientException {
+    public Consumer<String> consumer(PulsarClient client,
+                                     @Qualifier("simpleMessageListener") MessageListener<String> listener) throws PulsarClientException {
         return client.newConsumer(Schema.STRING)
                 .topic("my-topic")
                 .subscriptionName("my-subscription")
@@ -40,15 +41,4 @@ public class PulsarConfig {
                 .subscribe();
     }
 
-    @Bean
-    public MessageListener<String> messageListener() {
-        return (consumer, msg) -> {
-            try {
-                log.info("Message received: {}", new String(msg.getData()));
-                consumer.acknowledge(msg);
-            } catch (Exception e) {
-                consumer.negativeAcknowledge(msg);
-            }
-        };
-    }
 }
